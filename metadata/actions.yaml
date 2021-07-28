@@ -1,0 +1,11 @@
+actions:
+- name: getHelloByTailName
+  definition:
+    kind: ""
+    handler: http://host.docker.internal:3000/api/hello-from-json
+custom_types:
+  enums: []
+  input_objects: []
+  objects:
+  - name: CompleteHello
+  scalars: []

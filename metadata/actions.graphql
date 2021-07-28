@@ -1,0 +1,12 @@
+type Query {
+  getHelloByTailName (
+    tail: String
+  ): CompleteHello
+}
+
+type CompleteHello {
+  id : Int
+  title : String
+  description : String
+}
+
