@@ -5,11 +5,7 @@ import {
 } from "@apollo/client";
 
 const httpLink = new HttpLink({
-  uri: 'https://pleased-mastiff-54.hasura.app/v1/graphql',
-  headers: {
-    "Content-Type": "application/json",
-    "x-hasura-admin-secret": "zlqOCAaiinll6jGrhdsJbE24ZbOL1gBF1LdzGrPmy8uyWmXPCpkrQ9Hs4ddQqOoK"
-  }
+  uri: 'http://localhost:8080/v1/graphql',
 });
 
 export const client = new ApolloClient({

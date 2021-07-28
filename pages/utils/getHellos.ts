@@ -1,6 +1,11 @@
 import gql from "graphql-tag";
 import { client } from "../../config";
 
+export interface LongTails {
+	tail: string;
+	json_id: number;
+}
+
 export async function fetchAllHellos() {
 	const hellos = await client.query({
 		query: gql`
@@ -12,19 +17,21 @@ export async function fetchAllHellos() {
 		`
 	})
 
-	return hellos
+
+	return hellos.data.long_tails as Array<LongTails>;
 }
 
-export async function getIdByTail(tail: string) {
+export async function getHelloByTail(tail: string) {
 	const hello = await client.query({
 		query: gql`
 		query MyQuery {
-			long_tails(where: { tail: {_eq: ${tail}}}}) {
-				tail,
-				json_id
+			getHelloByTailName(tail: "${tail}") {
+				title,
+				description
 			}
 		}
-		
-		`
+		`,
 	});
+
+	return hello.data.getHelloByTailName
 }
