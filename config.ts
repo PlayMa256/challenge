@@ -5,8 +5,12 @@ import {
 } from "@apollo/client";
 
 const httpLink = new HttpLink({
-  // @ts-ignore
   uri: process.env.NEXT_PUBLIC_HASURA_ENDPOINT,
+  ...(process.env.NEXT_PUBLIC_HASURA_ENDPOINT) ? {
+    headers: {
+      "x-hasura-admin-secret": process.env.NEXT_PUBLIC_HASURA_ENDPOINT
+    }
+  } : {}
 });
 
 export const client = new ApolloClient({
