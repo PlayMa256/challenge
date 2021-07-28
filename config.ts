@@ -5,7 +5,8 @@ import {
 } from "@apollo/client";
 
 const httpLink = new HttpLink({
-  uri: 'http://localhost:8080/v1/graphql',
+  // @ts-ignore
+  uri: process.env.NEXT_PUBLIC_HASURA_ENDPOINT,
 });
 
 export const client = new ApolloClient({
